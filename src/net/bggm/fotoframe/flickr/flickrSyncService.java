@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 import net.bggm.fotoframe.volleySingleton;
 import net.bggm.fotoframe.flickr.flickrPhotoList.flickrPhoto;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
+
 import android.app.Service;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -31,6 +31,8 @@ import android.os.Process;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.util.Xml;
+import android.widget.Toast;
+
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -43,14 +45,12 @@ public class flickrSyncService extends Service {
     private Messenger uiMessenger;
     private final String ns = null;
     ArrayList<String> photoSets = new ArrayList<String>();
-    private boolean syncDisk = false;
     private boolean syncUI = false;
     private String newImg;
     private String formatPref = "b";
     private int maxResX = 1024;
     private int maxResY = 800;
     public static final String SYNC_AFTER= "syncAfterThis";
-    private String finalPhotoSet = null;
     private boolean processing=false;
     boolean[] syncList;
     
@@ -102,7 +102,7 @@ public class flickrSyncService extends Service {
 
 	@Override
 	public int onStartCommand(Intent intentToSyncFlickr, int flags, int startId) {
-	     // Toast.makeText(this, "flickrSync service starting", Toast.LENGTH_SHORT).show();
+	      Toast.makeText(this, "flickrSync service starting", Toast.LENGTH_SHORT).show();
 	      // For each start request, send a message to start a job and deliver the
 	      // start ID so we know which request we're stopping when we finish the job
 	      Message msg = flickrHandler.obtainMessage(); //this gets a new message (more efficient than instantiation)
@@ -133,7 +133,6 @@ public class flickrSyncService extends Service {
 	  
 	// Handler that receives messages from the thread
 	private final class ServiceHandler extends Handler {
-		boolean running=false;
 		public ServiceHandler(Looper looper) {
 	          super(looper);
 	    }
@@ -286,7 +285,7 @@ public class flickrSyncService extends Service {
  		            @Override
  		            public void onResponse(Bitmap response) {
  		                try{
- 		                	//Log.w("volleySingleton","Entering volley image request");
+ 		                	Log.w("volleySingleton","Entering volley image request");
         	        		if(formatPref=="o")
         	        		{
         	        			Log.w("volleySingleton","Resizing img to maxResX and Y");
@@ -303,7 +302,7 @@ public class flickrSyncService extends Service {
  		 
 	 				            MediaStore.Images.Media.insertImage(getContentResolver(),file.getAbsolutePath(),file.getName(),file.getName());
 	 				            // Log.w("volleySingleton","image download success. URL: "+imgURI);
-	 				            newImg = title;
+	 				            newImg = file.getAbsolutePath();
 	 				            syncUI = true;
  			                }
  			            }

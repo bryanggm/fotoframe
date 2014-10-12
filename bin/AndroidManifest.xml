@@ -17,18 +17,9 @@
         android:name="net.bggm.fotoframe.fotoframeApp"
         android:allowBackup="true">
         <service
-            android:name="com.example.android.networkusage.flickrSyncService"
+            android:name="net.bggm.fotoframe.flickr.flickrSyncService"
             android:exported="false"/>
 
-        <activity android:name=".ImgFlipperActnet.bggm.fotoframe.ImgFlipperActivity" android:label="@string/app_name" >
-        </activity>
-        <activity android:label="SettingsActivity" android:name=".SettingsActivity">
-             <intent-filter>
-                <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" />
-                <category android:name="android.intent.category.DEFAULT" />
-          </intent-filter>
-        </activity>
-        
         <activity
             android:name="net.bggm.fotoframe.FullScreenViewActivity"
             android:theme="@android:style/Theme.Holo.NoActionBar">

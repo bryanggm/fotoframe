@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry exported="true" kind="lib" path="C:/androidsdk/sdk/extras/android/support/v13/android-support-v13.jar"/>
-	<classpathentry excluding="com/example/android/networkusage/NetworkActivity.java|com/example/android/networkusage/SettingsActivity.java|com/example/android/networkusage/flickrSync.java|com/example/android/networkusage/photoList.java|com/imbryk/viewPager/LoopPagerAdapterWrapper.java" kind="src" path="src"/>
+	<classpathentry excluding="com/example/android/networkusage/NetworkActivity.java|com/example/android/networkusage/SettingsActivity.java|com/example/android/networkusage/flickrSync.java|com/example/android/networkusage/photoList.java|com/imbryk/viewPager/LoopPagerAdapterWrapper.java|net/bggm/fotoframe/FragmentedLoopViewPager.java" kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>

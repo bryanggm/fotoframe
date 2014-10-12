@@ -2,8 +2,6 @@ package net.bggm.fotoframe.util;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Locale;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Point;
@@ -11,7 +9,7 @@ import android.os.Environment;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.Toast;
-
+//TODO rewrite entire file...
 public class Utils {
 	String photoAlbum="myPics";
 	private Context _context;
@@ -68,6 +66,12 @@ public class Utils {
 		}
 
 		return filePaths;
+	}
+	
+	public String getFilePathByName(String name) {
+
+		return (new File(getAlbumStorageDir(photoAlbum), name)).getAbsolutePath();
+		
 	}
 
 	/*
