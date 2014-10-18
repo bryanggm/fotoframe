@@ -21,7 +21,7 @@
             android:exported="false"/>
 
         <activity
-            android:name="net.bggm.fotoframe.FullScreenViewActivity"
+            android:name="net.bggm.fotoframe.mainview.MainActivity"
             android:theme="@android:style/Theme.Holo.NoActionBar">
             <intent-filter>
                <action android:name="android.intent.action.MAIN" />

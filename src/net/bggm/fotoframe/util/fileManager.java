@@ -12,7 +12,7 @@ public class fileManager {
 	    private static fileManager instance;
 		String photoAlbum="myPics";
 		private Context _context;
-		private ArrayList<String>filePaths = new ArrayList<String>();
+		private ArrayList<String> filePaths = new ArrayList<String>();
 
 		// constructor
 		private fileManager(Context context) {
@@ -30,7 +30,7 @@ public class fileManager {
 		 */
 		public void updateFilePaths() {
 			
-
+			filePaths = new ArrayList<String>();
 			File directory = getAlbumStorageDir(photoAlbum);
 
 			// check for directory
@@ -72,6 +72,10 @@ public class fileManager {
 
 			return (new File(getAlbumStorageDir(photoAlbum), name)).getAbsolutePath();
 			
+		}
+		
+		public int getIndexByPath(String filePath){
+			return filePaths.indexOf(filePath);
 		}
 		
 		private File getAlbumStorageDir(String albumName) {

@@ -1,4 +1,4 @@
-package net.bggm.fotoframe;
+package net.bggm.fotoframe.util;
 
 import android.content.Context;
 import android.graphics.Bitmap;

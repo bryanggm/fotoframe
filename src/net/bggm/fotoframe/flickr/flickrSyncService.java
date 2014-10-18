@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import net.bggm.fotoframe.volleySingleton;
 import net.bggm.fotoframe.flickr.flickrPhotoList.flickrPhoto;
+import net.bggm.fotoframe.util.volleySingleton;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;

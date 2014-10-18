@@ -1,4 +1,4 @@
-package net.bggm.fotoframe;
+package net.bggm.fotoframe.mainview;
 
 
 import net.bggm.fotoframe.util.fileManager;
@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 
-public class FullScreenImageAdapter extends FragmentStatePagerAdapter  {
+public class LoopedViewPagerAdapter extends FragmentStatePagerAdapter  {
 
 	private fileManager files;
 	
@@ -32,7 +32,7 @@ public class FullScreenImageAdapter extends FragmentStatePagerAdapter  {
         return logicalPosition;
     }
 
-	public  FullScreenImageAdapter(FragmentManager fragmentManager, Context context) {
+	public  LoopedViewPagerAdapter(FragmentManager fragmentManager, Context context) {
         super(fragmentManager);
 		files = fileManager.getInstance(context);
     }    

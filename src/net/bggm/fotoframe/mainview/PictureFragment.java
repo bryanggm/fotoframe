@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.bggm.fotoframe;
+package net.bggm.fotoframe.mainview;
 
 import net.bggm.fotoframe.util.TouchImageView;
 import net.bggm.fotoframe.util.fileManager;
@@ -38,7 +38,7 @@ public class PictureFragment extends Fragment {
 	private TextView txtPages;
 	private TouchImageView imgDisplay;
 	private fileManager files;
-	private Context context;
+	private Activity parent;
 	
 	 @Override
 	 public void onCreate(Bundle savedInstanceState) {
@@ -47,11 +47,11 @@ public class PictureFragment extends Fragment {
 	 }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, 
-        Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
     	View pictureView = inflater.inflate(R.layout.picture_view, container,
     			 false);
+    	
         imgDisplay = (TouchImageView) pictureView.findViewById(R.id.imgDisplay);
         txtPages = (TextView) pictureView.findViewById(R.id.txtPages);
         txtPages.setText(String.valueOf(mCurrentPosition));
@@ -63,31 +63,18 @@ public class PictureFragment extends Fragment {
         return pictureView;
     }
     
-	  static PictureFragment newInstance(int position) {
-		PictureFragment f = new PictureFragment();
-	    Bundle args = new Bundle();
-	    args.putInt("position", position);
-	    f.setArguments(args);
-	    return f;
-	  }
-	  
+	 static PictureFragment newInstance(int position) {
+		 PictureFragment f = new PictureFragment();
+		 Bundle args = new Bundle();
+		 args.putInt("position", position);
+		 f.setArguments(args);
+		 return f;
+	 }
+  
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        context= activity;
-        files = fileManager.getInstance(context);
-    }
-
-    public void updateArticleView(int position) {
-        mCurrentPosition = position;     
-        imgDisplay = (TouchImageView) getActivity().findViewById(R.id.imgDisplay);
-        txtPages = (TextView) getActivity().findViewById(R.id.txtPages);
-        txtPages.setText(String.valueOf(position));
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-        txtPages.setText(String.valueOf(position));
-        Bitmap bitmap = BitmapFactory.decodeFile(files.get(position), options);
-        imgDisplay.setImageBitmap(bitmap);
-    	//ArrayListFragment.newInstance(position);
+        parent = activity;
+        files = fileManager.getInstance(parent);
     }
 }

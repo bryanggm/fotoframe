@@ -3,6 +3,7 @@ package net.bggm.fotoframe;
 
 import net.bggm.fotoframe.flickr.flickrPhotoList;
 import net.bggm.fotoframe.util.fileManager;
+import net.bggm.fotoframe.util.volleySingleton;
 
 import android.app.Application;
 
@@ -22,7 +23,5 @@ public class fotoframeApp extends Application {
     	volleySingleton.getInstance(this.getApplicationContext()).getRequestQueue().start();
        	flickrPhotoList.getInstance(this);
 		fileManager.getInstance(this).updateFilePaths();
-    }     
-    
-    
+    }      
 }
